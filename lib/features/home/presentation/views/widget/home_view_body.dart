@@ -16,12 +16,14 @@ class HomeViewBody extends StatelessWidget {
       padding: const EdgeInsets.only(left: 14),
       child: FeatureBookListView(),
     ),
-    SizedBox(height: 60,child: Padding(
+    SizedBox(height: 51,),
+     Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Text("Best Seller",
       style: Font.textStyle18,
-      ),
+      
     ),),
+    SizedBox(height: 20,),
     BestSellerListViewItem(),
     ]);
   }
