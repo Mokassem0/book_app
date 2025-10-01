@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/constants.dart';
 import 'package:flutter_application_1/core/utils/assets.dart';
 import 'package:flutter_application_1/core/utils/font.dart';
 
@@ -25,10 +26,19 @@ class BestSellerListViewItem extends StatelessWidget {
             ),
             SizedBox(width: 30,),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width*0.5,
-                  child: Text("Harry Potter and the Goblet of Fire",style: Font.textStyle20,maxLines: 2))
+                  child: Text("Harry Potter and the Goblet of Fire",style: Font.textStyle20.copyWith(fontFamily: kGTSectraFine),maxLines: 2)),
+                SizedBox(height: 3,),
+                Text("J.K. Rowling",style: Font.textStyle14.copyWith(color: Colors.white54),),
+                SizedBox(height: 3,),
+                Row(
+                  children: [
+                    Text("19.99\$",style: Font.textStyle20.copyWith(fontWeight: FontWeight.bold),),
+                    
+                  ])
               ],
             )
           ],
