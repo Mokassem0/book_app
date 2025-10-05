@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widget/featured_list_view_item.dart';
+import 'package:flutter_application_1/features/home/presentation/views/widget/custom_book_image.dart';
 
 class FeatureBookListView extends StatelessWidget {
   const FeatureBookListView({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class FeatureBookListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 5,
         itemBuilder: (context, index) {
-          return FeatureListViewItem();
+          return CustomBookImage();
         },
       ),
     );
