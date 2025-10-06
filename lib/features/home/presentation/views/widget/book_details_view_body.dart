@@ -4,6 +4,7 @@ import 'package:flutter_application_1/features/home/presentation/views/widget/bo
 import 'package:flutter_application_1/features/home/presentation/views/widget/book_rating.dart';
 import 'package:flutter_application_1/features/home/presentation/views/widget/custom_book_details_app_bar.dart';
 import 'package:flutter_application_1/features/home/presentation/views/widget/custom_book_image.dart';
+import 'package:flutter_application_1/features/home/presentation/views/widget/similar_book_list_view.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key});
@@ -13,34 +14,46 @@ class BookDetailsViewBody extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Column(children: [
-        CustomBookDetailsAppBar(),
-        SizedBox(height: 20,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: width *0.2),
-          child: CustomBookImage(),
-        ),
-        SizedBox(height: 43),
-        Text(
-          'The Jungle Book',
-          style: Font.textStyle30),
-        SizedBox(height: 6),
-        Opacity(
-          opacity: 0.7,
-          child: Text(
-            'Rudyard Kipling',
-            style: Font.textStyle18.copyWith(
-              fontStyle: FontStyle.italic,
-              fontWeight: FontWeight.w500,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(children: [
+          CustomBookDetailsAppBar(),
+          SizedBox(height: 20,),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width *0.2),
+            child: CustomBookImage(),
+          ),
+          SizedBox(height: 43),
+          Text(
+            'The Jungle Book',
+            style: Font.textStyle30),
+          SizedBox(height: 6),
+          Opacity(
+            opacity: 0.7,
+            child: Text(
+              'Rudyard Kipling',
+              style: Font.textStyle18.copyWith(
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
-        ),
-        SizedBox(height: 16),
-        BookRating(mainAxisAlignment: MainAxisAlignment.center,),
-        SizedBox(height: 37),
-        BookAction(),
-      ]),
+          SizedBox(height: 16),
+          BookRating(mainAxisAlignment: MainAxisAlignment.center,),
+          SizedBox(height: 37),
+          BookAction(),
+          SizedBox(height: 50),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text("You can also like", style: Font.textStyle14.copyWith(fontWeight: FontWeight.w600))),
+          SizedBox(height: 16),
+          SimilarBookListView(),
+          SizedBox(height: 40),
+        ]),
+      ),
     );
   }
 }
+
+
 
