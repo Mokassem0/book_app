@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widget/best_seller_list_view_item.dart';
 import 'package:flutter_application_1/features/search/presentation/views/widgets/custom_search_text_field.dart';
 import 'package:flutter_application_1/features/search/presentation/views/widgets/search_result_list_view.dart';
 
