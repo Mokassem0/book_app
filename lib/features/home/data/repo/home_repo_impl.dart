@@ -1,13 +1,32 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_application_1/core/errors/failure.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter_application_1/core/errors/failures.dart';
+import 'package:flutter_application_1/core/utils/api_service.dart';
 import 'package:flutter_application_1/features/home/data/model/book_model/book_model.dart';
 import 'package:flutter_application_1/features/home/data/repo/home_repo.dart';
 
-class HomeRepoImpl implements HomeRepo{
+class HomeRepoImpl implements HomeRepo {
+  final ApiService apiService;
+
+  HomeRepoImpl(this.apiService);
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBestSellerBooks() {
-    // TODO: implement fetchBestSellerBooks
-    throw UnimplementedError();
+  Future<Either<Failure, List<BookModel>>> fetchNewSetBooks() async {
+    try {
+      var data = await apiService.get(
+        endPoint:
+            'volumes?Filtering=free-ebooks&Sorting=newest&q=subject:Programming',
+      );
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return Right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioError(e));
+      }
+      return Left(ServerFailure(e.toString()));
+    }
   }
 
   @override
