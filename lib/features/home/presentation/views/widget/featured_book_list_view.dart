@@ -20,7 +20,9 @@ builder: (context, state) {
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return CustomBookImage();
+          return CustomBookImage(
+            imgurl: state.books[index].volumeInfo.imageLinks?.thumbnail ?? '',
+          );
         },
       ),
     );
