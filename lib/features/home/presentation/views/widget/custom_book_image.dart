@@ -8,7 +8,7 @@ class CustomBookImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadiusGeometry.circular(16),
+      borderRadius: BorderRadius.circular(16),
       child: AspectRatio(
         aspectRatio: 2.7 / 4,
         child: Padding(

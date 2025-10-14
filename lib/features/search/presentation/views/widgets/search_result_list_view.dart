@@ -11,7 +11,8 @@ class SearchResultListView extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          child: BookItemListView(),
+          // child: BookItemListView(),
+          child: Text("data"),
         ),
       childCount: 10,
       ));
