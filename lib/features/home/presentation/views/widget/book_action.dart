@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/utils/font.dart';
+import 'package:flutter_application_1/core/utils/function/custom_lunch_url.dart';
 import 'package:flutter_application_1/core/widget/custom_button.dart';
+import 'package:flutter_application_1/features/home/data/model/book_model/book_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookAction extends StatelessWidget {
-  const BookAction({super.key});
+  const BookAction({super.key, required this.books});
+  final BookModel books;
 
   @override
   Widget build(BuildContext context) {
@@ -16,23 +20,38 @@ class BookAction extends StatelessWidget {
               backgroundColor: Colors.white,
               textColor: Colors.black,
               text: "Free",
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(16), topLeft: Radius.circular(16)), 
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16),
+                topLeft: Radius.circular(16),
+              ),
               textStyle: Font.textStyle18,
-              
             ),
           ),
-           Expanded(
+          Expanded(
             child: CustomButton(
+              onPressed: () async {
+                openCustomLunchURL(context, books.volumeInfo.previewLink ?? '');
+              },
               backgroundColor: Color(0xFFEF8262),
               textColor: Colors.white,
-              text: "Free preview",
-              borderRadius: BorderRadius.only(bottomRight: Radius.circular(16), topRight: Radius.circular(16)),
-               textStyle: Font.textStyle16,
-              
+              text: getText(books),
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(16),
+                topRight: Radius.circular(16),
+              ),
+              textStyle: Font.textStyle16,
             ),
           ),
         ],
       ),
     );
+  }
+
+  String getText(BookModel books) {
+    if (books.volumeInfo.previewLink == null) {
+      return 'Not Available';
+    } else {
+      return 'Preview';
+    }
   }
 }

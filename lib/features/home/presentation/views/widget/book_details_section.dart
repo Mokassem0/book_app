@@ -42,7 +42,9 @@ class BookDetaisSection extends StatelessWidget {
           rating: bookModel.volumeInfo.averageRating?.toDouble() ?? 0.0,
           ),
           SizedBox(height: 37),
-          BookAction(),
+          BookAction(
+            books: bookModel,
+          ),
       ],
     );
   }

@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/features/home/presentation/views/widget/best_seller_list_view_item.dart';
 
 class SearchResultListView extends StatelessWidget {
   const SearchResultListView({super.key});
@@ -11,10 +10,9 @@ class SearchResultListView extends StatelessWidget {
       delegate: SliverChildBuilderDelegate(
         (context, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
-          // child: BookItemListView(),
-          child: Text("data"),
+           child: Text("Opps No Result Found"),
         ),
-      childCount: 10,
+      childCount: 1,
       ));
   }
 }
